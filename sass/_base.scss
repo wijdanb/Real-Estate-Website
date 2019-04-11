@@ -1,0 +1,74 @@
+// COLOR VARIABLES
+$color-primary: #c69963;
+$color-primary-dark: #B28451;
+
+$color-secondary: #101d2c;
+
+$color-grey-light-1: #f9f7f6;
+$color-grey-light-2: #aaa;
+
+$color-grey-dark-1: #54483A;
+$color-grey-dark-2: #6D5D4B;
+
+// FONT VARIABLES
+$font-primary: 'Nunito', sans-serif;
+$font-display: 'Josefin Sans', sans-serif;
+
+//Responsive breakpoints
+$bp-largest: 75em; //1200px
+$bp-large: 62.5em; //1000px
+$bp-medium: 50em; //800px
+$bp-small: 37.5em; //600px
+
+
+*,
+*::before,
+*::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html{
+    box-sizing: border-box;
+    font-size: 62.5%; // 10px/16px(browserdefault) = 62.5% -> 1rem = 10px
+
+    @media only screen and (max-width:$bp-largest){
+        font-size: 50%;
+    }
+}
+
+body{
+    font-family: $font-primary;
+    color: $color-grey-dark-2;
+    font-weight: 300;
+    line-height: 1.6;
+}
+
+.container{
+    display:grid;
+    grid-template-rows: 80vh min-content 40vw repeat(3,min-content); //auto means it adapts to the conent but using vw and vh is more important to use in real-world scenarios like this.Using min-content so that the rows can adapt to the content. It mattes mostly in rows, not soo much in columns because its sometimes usefull for the rows to have the height of the content.
+    //only columns have names since columns are more important to the overall layout
+    grid-template-columns: [sidebar-start] 8rem [sidebar-end full-start] minmax(6rem,1fr) [center-start] repeat(8,
+    [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem,1fr) [full-end]; //Usually I use something like 1200px or something between 1100 and 1200. Ill use 1140 and if I divide it by 8 its 142pixels which rounded is (140px)14rem. maximum is 14 rem but it can be lower BUT never below the min-content. The minimum size that it should have in order to fit the content in there is: 
+
+    
+    @media only screen and (max-width:$bp-large){
+        grid-template-rows: 6rem 80vh min-content 40vw repeat(3,min-content); //auto means it adapts to the conent but using vw and vh is more important to use in real-world scenarios like this.Using min-content so that the rows can adapt to the content. It mattes mostly in rows, not soo much in columns because its sometimes usefull for the rows to have the height of the content.
+        //only columns have names since columns are more important to the overall layout
+        grid-template-columns:  [full-start] minmax(6rem,1fr) [center-start] repeat(8,
+        [col-start] minmax(min-content, 14rem) [col-end]) [center-end] minmax(6rem,1fr) [full-end]; //Usually I use something like 1200px or something between 1100 and 1200. Ill use 1140 and if I divide it by 8 its 142pixels which rounded is (140px)14rem. maximum is 14 rem but it can be lower BUT never below the min-content. The minimum size that it should have in order to fit the content in there is: 
+    
+    }
+
+    
+    
+    @media only screen and (max-width:$bp-medium){
+        //adding a row for 
+        grid-template-rows: 6rem calc(100vh - 6rem) min-content min-content min-content repeat(3,min-content); //auto means it adapts to the conent but using vw and vh is more important to use in real-world scenarios like this.Using min-content so that the rows can adapt to the content. It mattes mostly in rows, not soo much in columns because its sometimes usefull for the rows to have the height of the content.
+      
+    }
+    
+    
+}
+

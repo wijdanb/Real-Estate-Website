@@ -1,0 +1,35 @@
+.features{
+   
+    grid-column: center-start / center-end;
+
+    margin: 15rem 0;
+
+    display: grid;
+    //grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr)); //media querie. So when width is smaller, the columns decrease from 3->2->1 and rows go from 2->3->4->6
+    grid-template-rows: auto auto; 
+    grid-gap: 6rem;
+
+    align-items: start; // to make all the text the same height and not stretched(default) where the smaller texts are uneven
+
+}
+
+.feature{
+
+    display:grid; //nesting a grid inside a grid
+    grid-template-columns: min-content 1fr; //mincontent is good here because if I changed the width in the &__icon then this would automatically adjust the width of the column
+    //I dont need to specify the rows, since all I want to happen is for them to be the size of the content. This is a usual pattern in the real world, I define the COLUMNS ; the content defines the ROWS!
+    grid-row-gap: 1.5rem;
+    grid-column-gap: 2.5rem;
+
+    &__icon{
+        fill: $color-primary;
+        width: 4.5rem;
+        height: 4.5rem;
+        grid-row: 1 / span 2; //cant use -1 since -1 only works for explicit grids! So instead I span 2
+        transform: translateY(-1rem);
+    }
+    &__text{
+        font-size:1.7rem; 
+    }
+}
